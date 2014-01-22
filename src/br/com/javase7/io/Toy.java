@@ -8,12 +8,18 @@ import java.io.Reader;
 public class Toy {
 
 	public static void main(String[] args) throws Exception {
-		/*
-		 * MyBufferedReader br = new MyBufferedReader(new
-		 * FileReader(System.getProperty("user.dir") + "\\classes.txt")); try {
-		 * String line = null; while ((line = br.readLine()) != null) {
-		 * instantiate(line); } } finally { br.close(); }
-		 */
+		/*MyBufferedReader br = new MyBufferedReader(new FileReader(System.getProperty("user.dir") + "\\classes.txt"));
+
+		try {
+			String line = null;
+
+			while ((line = br.readLine()) != null) {
+				instantiate(line);
+			}
+
+		} finally {
+			br.close();
+		}*/
 
 		try (MyBufferedReader br = new MyBufferedReader(new FileReader(System.getProperty("user.dir") + "\\classes.txt"))) {
 			String line = null;
@@ -24,7 +30,7 @@ public class Toy {
 	}
 
 	private static void instantiate(String className) throws Exception {
-		try {
+		/*try {
 			Class<?> clazz = Class.forName(className);
 			Object o = clazz.newInstance();
 			System.out.println(o.getClass().getName());
@@ -38,9 +44,9 @@ public class Toy {
 		} catch (IllegalAccessException e) {
 			System.err.println("Nao foi possivel instanciar a classe: " + className);
 			throw e;
-		}
+		}*/
 
-		/*try {
+		try {
 			Class<?> clazz = Class.forName(className);
 			Object o = clazz.newInstance();
 			System.out.println(o.getClass().getName());
@@ -50,7 +56,7 @@ public class Toy {
 		} catch (InstantiationException | IllegalAccessException e) {
 			System.err.println("Nao foi possivel instanciar a classe: " + className);
 			throw e;
-		}*/
+		}
 	}
 
 	public static class MyBufferedReader extends BufferedReader {
